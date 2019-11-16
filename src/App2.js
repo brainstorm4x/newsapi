@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react'
 
-function App() {
+function App2() {
   const [news, setNews] = useState([])
   const [searchQuery, setSearchQuery] = useState('react')
   const [url, setUrl] = useState('http://hn.algolia.com/api/v1/search?query=react')
@@ -15,24 +15,24 @@ function App() {
   };
 
   useEffect(() => {
-    fetchNews()
+  fetchNews()
   }, [url])
 
   const handleChange = (e) => {
-    setSearchQuery(e.target.value)
+    setSearchQuery(e.target.value);
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setUrl(`http://hn.algolia.com/api/v1/search?query=${searchQuery}`)
+    setUrl(`http://hn.algolia.com/api/v1/search?query={searchQuery}`)
   }
 
-  const showLoading = () => (loading ? <h2>Loading...</h2> : "")
+  const showLoading = () => (loading ? <h1>Loading...</h1> : "")
 
-  const searchForm = () => (
+  const SearchForm = () => (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={searchQuery} onChange={handleChange}/>
-      <button>Search</button>
+      <input type="text" value={searchQuery} onChange={handleChange}></input>
+      <button>Submit</button>
     </form>
   )
 
@@ -42,12 +42,12 @@ function App() {
 
   return(
     <div>
-      <h2>News</h2>
+      <h2>news</h2>
       {showLoading()}
-      {searchForm()}
+      {SearchForm()}
       {showNews()}
     </div>
   )
 }
 
-export default App;
+export default App2;
